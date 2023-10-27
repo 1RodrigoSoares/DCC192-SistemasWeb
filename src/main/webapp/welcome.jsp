@@ -25,6 +25,9 @@
         <p>Redirecionamento</p>
         <p>Maven</p>
         <p>Objeto</p>
-        <a href="Menu"> Voltar </a>
+        <form action="Controller" method="post">
+            <input type="hidden" name="operacao" value="menu">
+            <button type="submit">Voltar</button>
+         </form>
     </body>
 </html>

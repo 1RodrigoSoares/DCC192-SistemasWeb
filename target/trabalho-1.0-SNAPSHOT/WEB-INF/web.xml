@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="5.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
-    <servlet>
-        <servlet-name>WelcomeServlet</servlet-name>
-        <servlet-class>com.exercicios.trabalho.code.WelcomeServlet</servlet-class>
-    </servlet>
+    <filter>
+        <filter-name>controlsess</filter-name>
+        <filter-class>com.exercicios.trabalho.code.controlsess</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>controlsess</filter-name>
+        <url-pattern>/menu.jsp</url-pattern>
+        <url-pattern>/welcome.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <listener>
+        <listener-class>com.exercicios.trabalho.code.Listener1</listener-class>
+    </listener>
     <servlet>
         <servlet-name>Menu</servlet-name>
         <servlet-class>com.exercicios.trabalho.code.Menu</servlet-class>
@@ -13,34 +22,26 @@
         </init-param>
     </servlet>
     <servlet>
-        <servlet-name>sair</servlet-name>
-        <servlet-class>com.exercicios.trabalho.code.sair</servlet-class>
+        <servlet-name>Controller</servlet-name>
+        <servlet-class>com.exercicios.trabalho.code.Controller</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>ErroDeJava</servlet-name>
-        <servlet-class>com.exercicios.trabalho.code.ErroDeJava</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>WelcomeServlet</servlet-name>
-        <url-pattern>/WelcomeServlet</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Menu</servlet-name>
         <url-pattern>/Menu</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>sair</servlet-name>
-        <url-pattern>/sair</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ErroDeJava</servlet-name>
-        <url-pattern>/ErroDeJava</url-pattern>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/Controller</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>1</session-timeout>
     </session-config>
     <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/erro_java.jsp</location>
+    </error-page>
+    <error-page>
         <error-code>404</error-code>
-        <location>/erroHtml.html</location>
+        <location>/erro_html.jsp</location>
     </error-page>
 </web-app>
